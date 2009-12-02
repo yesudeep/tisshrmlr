@@ -22,6 +22,11 @@ IMAGE_FILES = Split("""
     image/bg/paper_grunge.jpg
     image/bg/desk.jpg
     image/button_bg.png
+
+    image/logo/en_US/tiss_stroked.png
+    image/logo/en_US/hrmlr.png
+    image/logo/shield.png
+    image/logo/shield_small.png
 """)
 
 CSS_FILES = Split("""
@@ -61,27 +66,22 @@ for f in IMAGE_FILES:
 
 
 # Stitching graphics together
-'''
+
 stitched_images = [
         dict(
-            target='image/icon/crumpled/128x128/icon-set.png',
+            target='image/logo/en_US/logo_heading.png',
             sources=Split("""
-                image/icon/crumpled/128x128/twitter-box.png
-                image/icon/crumpled/128x128/orkut.png
-                image/icon/crumpled/128x128/facebook-box.png
-                image/icon/crumpled/128x128/gmail-envelope.png
-                image/icon/crumpled/128x128/feed.png
-                image/icon/crumpled/128x128/broadcast.png
+                image/logo/shield.png
+                image/logo/en_US/hrmlr.png
             """),
             orientation='horizontal'
             ),
-
 ]
 
 for stitch in stitched_images:
     func = env.HStitchImages if stitch.get('orientation', 'horizontal') == 'horizontal' else env.VStitchImages
     func(DEST_DIR + stitch['target'], [SRC_DIR + f for f in stitch['sources']])
-'''
+
 
 # Minification of the generated CSS and JS files.
 MINIFIABLE_FILES = SCRIPT_FILES + CSS_FILES + Split("""
