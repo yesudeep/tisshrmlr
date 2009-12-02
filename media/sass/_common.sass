@@ -1,4 +1,6 @@
 @import fontstacks.sass
+@import fancy_buttons.sass
+@import border-radius.sass
 
 !color_awesome_green = #91bd09
 !color_awesome_green_dark = #749a02
@@ -33,28 +35,6 @@
   :-webkit-transform= !value
   :-moz-transform= !value
   :transform= !value
-
-
-// Border radius mixins to ease repeating proprietary extensions.
-=border-radius(!radius)
-  -moz-border-radius= !radius
-  -webkit-border-radius= !radius
-
-=border-top-right-radius(!radius)
-  -moz-border-radius-topright= !radius
-  -webkit-border-top-right-radius= !radius
-
-=border-top-left-radius(!radius)
-  -moz-border-radius-topleft= !radius
-  -webkit-border-top-left-radius= !radius
-
-=border-bottom-left-radius(!radius)
-  -moz-border-radius-bottomleft= !radius
-  -webkit-border-bottom-left-radius= !radius
-
-=border-bottom-right-radius(!radius)
-  -moz-border-radius-bottomright= !radius
-  -webkit-border-bottom-right-radius= !radius
 
 =box-shadow(!value)
   -moz-box-shadow= !value
@@ -303,3 +283,25 @@ input.awesome-button.cool
   :background-color= !color_awesome_green
 input.awesome-button.cool:hover, input.awesome-button.cool:visited:hover, button.cool:hover
   :background-color= !color_awesome_green_dark
+
+
+!fancy_green = darken(#57b42c, 8)
+!fancy_blue = adjust_hue(!fancy_green, 110)
+!fancy_red = adjust_hue(!fancy_green, -100)
+
+a.button, button
+  +fancy-button-structure
+  +fancy-button-colors
+  margin: 0 2px
+  vertical-align: middle
+  &.light
+    +fancy-button-colors(#bbb)
+  &.green
+    +fancy-button-colors(!fancy_green)
+  &.blue
+    +fancy-button-colors(!fancy_blue)
+    +fancy-button-size(32px, 32px)
+  &.red
+    +fancy-button-colors(!fancy_red)
+  &.yellow
+    +fancy-button-colors(darken(desaturate(yellow, 35), 5))

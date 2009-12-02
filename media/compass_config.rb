@@ -1,3 +1,5 @@
+require 'compass-colors'
+require 'fancy-buttons'
 require 'ninesixty'
 # require 'susy'
 # Require any additional compass plugins here.
@@ -9,4 +11,3 @@ images_dir = "image"
 javascripts_dir = "script"
 output_style = :expanded   # :nested, :expanded, :compact, or :compressed
 relative_assets = true
-
